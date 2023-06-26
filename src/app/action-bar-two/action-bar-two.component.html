@@ -1,0 +1,14 @@
+<div>
+  <button (click)="decrease()">-</button>
+  <ng-container *ngIf="inputDisplay else counterTemplate">
+    <input type="text" name="" id="" [value]="counter">
+  </ng-container>
+  <ng-template #counterTemplate>
+    <span style="font-size: 20px; font-weight: bold; margin-left: 5px; margin-right: 5px;">{{counter}}</span>
+  </ng-template>
+  <button (click)="increase()">+</button>
+</div>
+
+<div class="my-5" *ngIf="inputDisplay">
+  <button (click)="back()">back</button>
+</div>

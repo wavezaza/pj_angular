@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="text-start">
+    <span class="p-float-label mt-5">
+      <input pInputText id="username"  #InputText/>
+      <label htmlFor="username">กรอกชื่อเพื่อค้นหา</label>
+      <button (click)="sear(InputText.value)">ค้นหา</button>
+    </span>
+  </div>
+  <p-table [value]="bookList"  [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ISBN</th>
+            <th>Name</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+        <tr>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.name }}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="my-5" >
+  <button (click)="back2()">back</button>
+</div>

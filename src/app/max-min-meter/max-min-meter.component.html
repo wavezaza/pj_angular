@@ -1,0 +1,9 @@
+<p>max-min-meter works!</p>
+<div>
+  <h2>{{minLabel}} : </h2>
+  <app-action-bar [step]="5" (counterChange)="doMinChange($event)"></app-action-bar>
+</div>
+<div>
+  <h2>{{maxLabel}} : </h2>
+  <app-action-bar [step]="10" (counterChange)="doMaxChange($event)"></app-action-bar>
+</div>

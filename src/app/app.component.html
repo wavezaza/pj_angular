@@ -1,0 +1,140 @@
+<div class="container text-center my-5" *ngIf="activates else elseTemplate">
+  <h1 class="bg-danger"> test คิดเลขตามโจทย์</h1>
+  <div >
+      <h4>มา 4 จ่าย 3</h4>
+      <input #priceBuffetInput type="text" placeholder="กรอกราคา" value="2000">
+      <button (click)="calBuffetInput(priceBuffetInput.value)"> คำนวณเลย </button>
+  </div>
+  <span>คนละ {{value}} บาท</span>
+
+  <app-action-bar (counterChange)="testClickNumber($event)" [step]="5"></app-action-bar>
+  <app-action-bar (counterChange)="testClickNumber($event)" [step]="10"></app-action-bar>
+  ิ<button (click)="testClick()"> test </button>
+
+  <app-max-min-meter [minLabel]="MinLabel" [maxLabel]="MaxLabel" (minChage)="doAppMinChange($event)" (maxChage)="doAppMaxChange($event)"></app-max-min-meter>
+
+  <app-sqaure-flex [divWidth]="apidivWidth" [divHeight]="apidivHeight"></app-sqaure-flex>
+  <div>
+    <h2>width</h2>
+    <button class="btn btn-danger" (click)="clickApiDivWidth1()">width 50 px</button>
+    <button class="btn btn-primary" (click)="clickApiDivWidth2()">width 100 px</button>
+    <button class="btn btn-dark" (click)="clickApiDivWidth3()">width 300 px</button>
+  </div>
+
+  <div>
+    <h2>height</h2>
+    <button class="btn btn-danger" (click)="clickApiDivHeight1()">height 50 px</button>
+    <button class="btn btn-primary" (click)="clickApiDivHeight2()">height 100 px</button>
+    <button class="btn btn-dark" (click)="clickApiDivHeight3()">height 300 px</button>
+  </div>
+  <app-sqaure-flex [divWidth]="apidivWidth" [divHeight]="apidivHeight"></app-sqaure-flex>
+  <app-action-bar  [(counter)]="apidivWidth" [step]="5"></app-action-bar>
+
+  <div class="container  mt-5 ">
+    <h1>Arr</h1>
+    <ul class=" ">
+      <li class=""  *ngFor="let customer of customerList;let i=index">{{customer}}
+        <button (click)="del(i)">ลบข้อมูล</button>
+      </li>
+    </ul>
+    <button (click)="put()">เพิ่มข้อมูล</button>
+  </div>
+</div>
+
+
+
+<ng-template #elseTemplate>
+  <div class="container text-center my-5">
+    <h1>------------------------------------------------</h1>
+    <h1>หัวข้อที่ 1 Angular พื้นฐาน</h1>
+    <div >
+      <h2>activate now</h2>
+    </div>
+    <button  (click)="activate()" >activate</button>
+  </div>
+</ng-template>
+
+<!-- ---------------------------------------------------------- -->
+
+<div class="container text-center">
+  <app-action-bar-two (activates)="back($event)"  [inputDisplay]="inputDisplays"></app-action-bar-two>
+  <h1>------------------------------------------------</h1>
+</div>
+
+<!-- ---------------------------------------------------------- -->
+
+<ng-template #elstest>
+  <div class="container text-center my-5">
+  <h1>------------------------------------------------</h1>
+  <h1>หัวข้อที่ 2 การ Get API และใช้ตาราง</h1>
+    <div >
+      <h2>เปิดดูตาราง</h2>
+    </div>
+    <button  (click)="activate2()" >เปิด</button>
+    <h1>------------------------------------------------</h1>
+  </div>
+
+</ng-template>
+
+<div class="container text-center" *ngIf="activates2 else elstest">
+  <app-test (activates2)="back2($event)"></app-test>
+</div>
+
+<!-- ทดสอบการทำ ตะกร้า -->
+<app-shopping-cart></app-shopping-cart>
+<app-shopping-cart [value]="1"></app-shopping-cart>
+<app-shopping-cart [value]="10"></app-shopping-cart>
+<app-shopping-cart [value]="100"></app-shopping-cart>
+<app-shopping-cart [value]="999"></app-shopping-cart>
+<!-- -->
+
+<!-- ทดสอบการทำ web shopping ค้นหาสินค้า-->
+<app-shopping-search (onSearch)="searchProduct($event)"></app-shopping-search>
+<div>
+  <p-table [value]="filteredProducts"  [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Price</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-products>
+        <tr>
+            <td>{{ products.name }}</td>
+            <td>{{ products.description }}</td>
+            <td>{{ products.price }}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+<!-- -->
+
+
+<!-- ทดสอบการทำ web shopping ค้นหาสินค้า เพิ่มเติมคือเชื่อมต่อ API-->
+<app-shopping-search (onSearch)="searchProduct2($event)"></app-shopping-search>
+<div>
+  <p-table [value]="filteredProducts2"  [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Price</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-products2>
+        <tr>
+            <td>{{ products2.name }}</td>
+            <td>{{ products2.description }}</td>
+            <td>{{ products2.price }}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+<!-- -->
+
+
+<div class="container mt-5 mb-5">
+  <app-test-sum></app-test-sum>
+</div>
+<router-outlet></router-outlet>
